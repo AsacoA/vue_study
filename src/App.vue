@@ -5,11 +5,10 @@
 3.
   -->
 
-  <div class="black-bg" v-if="modal == true">
+  <div class="black-bg" v-if="modal_status == true" @click.self="closeModal">
     <div class="white-bg">
       <h4>상세페이지</h4>
       <p>상세페이지내용</p>
-      <button @click="modal = false">닫기</button>
     </div>
   </div>
 
@@ -17,11 +16,11 @@
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
 
-  <div v-for="(it  
-, i) in room_data" :key="i">
-    <img class="room-img" :src="room_data[i].image" />
-    <h4 @click="modal = true">{{ room_data[i].content }}</h4>
-    <p>보증금 : {{ room_data[i].price }}</p>
+  <div v-for="(it, i) in room_data" :key="i">
+    <img @click="openModal" class="room-img" :src="room_data[i].image" />
+    <h4 @click="openModal">{{ room_data[i].content }}</h4>
+    <p>보증금 : {{room_data[i].price}} 만원</p>
+    <hr />
   </div>
 </template>
 
@@ -36,15 +35,19 @@ export default {
   data() {
     return {
       room_data: data,
-      modal: false,
+      modal_status: false,
       menus: ["home", "Shop", "About"],
-      products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
-      prices: [12, 36, 72],
-      singo: [0, 0, 0],
     };
   },
-
-  methods: {},
+  methods: {
+    closeModal() {
+      this.modal_status = false;
+    },
+    openModal() {
+      this.modal_status = true;
+    },
+    // eslint-disable-next-line no-unused-vars
+  },
   components: {},
 };
 </script>
