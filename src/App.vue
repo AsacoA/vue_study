@@ -16,7 +16,7 @@
   <div class="menu">
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
-  
+
   <div v-for="(item, i) in room_data" :key="i">
     <img :src="room_data[i].image" class="room-img" />
     <h4>{{ room_data[i].content }}</h4>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import data from "./data";
+import data from "./assets/data";
 
 export default {
   name: "App",
