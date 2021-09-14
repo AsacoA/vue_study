@@ -9,44 +9,24 @@
     <div class="white-bg">
       <h4>상세페이지</h4>
       <p>상세페이지내용</p>
-      <button class="modal_button" @click="modal = false">닫기</button>
+      <button @click="modal = false">닫기</button>
     </div>
   </div>
 
   <div class="menu">
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
-  <!-- <div v-for="(product, i) in products" :key="i">
-    <img src="./assets/room0.jpg" />
-    <h4>{{ product }}</h4>
-    <p>{{ prices[i] }}</p>
-    <button @click="singo[i] += 1">허위매물신고</button>
-    <span>신고수 : {{ singo[i] }} </span>
-  </div> -->
-  <div>
-    <img src="./assets/room0.jpg" class="room-img" />
-    <h4 @click="modal = true">{{ products[0] }}</h4>
-    <p>{{ prices[0] }} 만원</p>
-    <button @click="singo[0] += 1">허위매물신고</button>
-    <span>신고수 : {{ singo[0] }} </span>
-  </div>
-  <div>
-    <img src="./assets/room1.jpg" class="room-img" />
-    <h4>{{ products[1] }}</h4>
-    <p>{{ prices[1] }} 만원</p>
-    <button @click="singo[1] += 1">허위매물신고</button>
-    <span>신고수 : {{ singo[1] }} </span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img" />
-    <h4>{{ products[2] }}</h4>
-    <p>{{ prices[2] }} 만원</p>
-    <button @click="singo[2] += 1">허위매물신고</button>
-    <span>신고수 : {{ singo[2] }}</span>
+  
+  <div v-for="(item, i) in room_data" :key="i">
+    <img :src="room_data[i].image" class="room-img" />
+    <h4>{{ room_data[i].content }}</h4>
+    <p>{{ room_data[i].price }}</p>
   </div>
 </template>
 
 <script>
+import data from "./data";
+
 export default {
   name: "App",
   //데이터 바인딩
@@ -54,6 +34,7 @@ export default {
   //UI
   data() {
     return {
+      room_data: data,
       modal: false,
       menus: ["home", "Shop", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
@@ -88,7 +69,7 @@ div {
   border-radius: 8px;
   padding: 20px;
 }
-.modal_button {
+.white-bg button {
   align-content: left;
   margin-right: 20px;
   margin-left: 10px;
