@@ -1,10 +1,10 @@
 <template>
-  <!--
-    동적 UI (모달창) 
-    1. 디자인부터 미리 만들기
-    2. UI의 현재사애를 데이터로 만들기
-    3. 
-    -->
+  <!--동적 UI (모달창)
+1. 디자인부터 미리 만들기
+2. UI의 현재사애를 데이터로 만들기
+3.
+  -->
+
   <div class="black-bg" v-if="modal == true">
     <div class="white-bg">
       <h4>상세페이지</h4>
@@ -17,10 +17,11 @@
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
 
-  <div v-for="(item, i) in room_data" :key="i">
-    <img :src="room_data[i].image" class="room-img" />
-    <h4>{{ room_data[i].content }}</h4>
-    <p>{{ room_data[i].price }}</p>
+  <div v-for="(it  
+, i) in room_data" :key="i">
+    <img class="room-img" :src="room_data[i].image" />
+    <h4 @click="modal = true">{{ room_data[i].content }}</h4>
+    <p>보증금 : {{ room_data[i].price }}</p>
   </div>
 </template>
 
@@ -70,9 +71,8 @@ div {
   padding: 20px;
 }
 .white-bg button {
-  align-content: left;
-  margin-right: 20px;
-  margin-left: 10px;
+  margin-left: 80%;
+  margin-top: 3%;
 }
 
 #app {
